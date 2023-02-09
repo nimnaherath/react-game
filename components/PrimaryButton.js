@@ -1,15 +1,13 @@
 import { Text, View, Pressable, StyleSheet } from "react-native";
 import symbolicateStackTrace from "react-native/Libraries/Core/Devtools/symbolicateStackTrace";
 
-function PrimaryButton({ children }) {
-  function dumyHandler() {
-    console.log("test");
-  }
+function PrimaryButton({ children , onPress }) {
+
   return (
     <View style={styles.buttonOuterContainer}>
       <Pressable
         style={(pressed) => pressed? [styles.buttInnerContainer, styles.pressed] : styles.buttInnerContainer}
-        onPress={dumyHandler}
+        onPress={onPress}
         android_ripple={{ color: "#" }}
       >
         <Text style={styles.buttonTest}>{children}</Text>
