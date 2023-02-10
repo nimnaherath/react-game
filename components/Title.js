@@ -11,11 +11,11 @@ const styles = StyleSheet.create({
   titile: {
     fontSize: 24,
     fontWeight: "bold",
-    color: Colors.accent500 ,
+    color: 'white' ,
     textAlign: "center",
     borderWidth: 2,
     padding: 12,
-    borderColor: Colors.accent500 ,
+    borderColor: 'white' ,
     textAlign: "center",
   },
 });
