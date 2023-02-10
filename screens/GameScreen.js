@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
+import NumberContainer from "../components/Game/NumberContainer";
 import Title from "../components/Title";
 
 function generateRandomNumber(min, max, exlude) {
@@ -14,12 +15,14 @@ function generateRandomNumber(min, max, exlude) {
 
 function GameScrean({ userNumber }) {
   const initialGuess = generateRandomNumber(1, 100, userNumber);
-  const [surrentGuess, setCurrentGuess] = useState(initialGuess);
+  const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
   return (
     <View style={styles.screan}>
       <Title>Opponent's Guess</Title>
-      {/* Guess number */}
+      <NumberContainer>
+        {currentGuess}
+      </NumberContainer>
       <View>
         <Text>Higher or Lower</Text>
         {/* +/- button */}
