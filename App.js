@@ -3,36 +3,49 @@ import StartGameScreen from "./screens/StartGameScreen";
 import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
 import GameScrean from "./screens/GameScreen";
-import GameOverScreen from './screens/GameOverScreen';
-import Colors from './constants/colors';
+import GameOverScreen from "./screens/GameOverScreen";
+import Colors from "./constants/colors";
+import { useFonts } from "expo-font";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(true);
+
+  const [fontloaded] = useFonts({
+    "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
+    "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+  });
+
+  if (!fontloaded) {
+    return null;
+  }
 
   function pickrNumberHandler(enterdNumber) {
     setUserNumber(enterdNumber);
     setGameIsOver(false);
   }
 
-  function gameOverHandler(){
+  function gameOverHandler() {
     setGameIsOver(true);
   }
 
   let screan = <StartGameScreen onPickNumber={pickrNumberHandler} />;
 
   if (userNumber) {
-    screan = <GameScrean userNumber={userNumber}  onGameOver={gameOverHandler}/>;
+    screan = (
+      <GameScrean userNumber={userNumber} onGameOver={gameOverHandler} />
+    );
   }
 
-  if(gameIsOver && userNumber){
-    screan = <GameOverScreen/>
+  if (gameIsOver && userNumber) {
+    screan = <GameOverScreen />;
   }
-
-  
 
   return (
-    <LinearGradient colors={[Colors.primart800, Colors.accent500]} style={styles.rootScrean}>
+    <LinearGradient
+      colors={[Colors.primart800, Colors.accent500]}
+      style={styles.rootScrean}
+    >
       <ImageBackground
         source={require("./assets/images/background.jpg")}
         resizeMode="cover"
