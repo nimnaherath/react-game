@@ -29,7 +29,7 @@ function GameScrean({ userNumber, onGameOver }) {
 
   useEffect(() => {
     if (currentGuess === userNumber) {
-      onGameOver();
+      onGameOver(guessRounds.length);
       minBoundary = 1;
       maxBoundary = 100;
     }
@@ -122,7 +122,8 @@ const styles = StyleSheet.create({
   instructionText: {
     marginBottom: 12,
   },
-  listContainer:{
+  listContainer: {
     flex: 1,
-  }
+    padding: 16,
+  },
 });
