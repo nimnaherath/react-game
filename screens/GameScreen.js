@@ -3,6 +3,8 @@ import { Text, View, StyleSheet, Alert } from "react-native";
 import NumberContainer from "../components/Game/NumberContainer";
 import Title from "../components/Title";
 import PrimaryButton from "../components/PrimaryButton";
+import Card from "../components/Card";
+import InstructionText from "../components/InstructionText";
 
 function generateRandomNumber(min, max, exlude) {
   const random = Math.floor(Math.random() * (max - min) + min);
@@ -57,19 +59,24 @@ function GameScrean({ userNumber, onGameOver }) {
     <View style={styles.screan}>
       <Title>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <View>
-        <Text>Higher or Lower</Text>
-        <View>
-          <PrimaryButton onPress={nextGuessNumber.bind(this, "lower")}>
-            -
-          </PrimaryButton>
-          <PrimaryButton onPress={nextGuessNumber.bind(this, "greater")}>
-            +
-          </PrimaryButton>
+      <Card>
+        <InstructionText>Higher or Lower</InstructionText>
+        <View style={styles.buttunsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessNumber.bind(this, "lower")}>
+              -
+            </PrimaryButton>
+          </View>
+
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessNumber.bind(this, "greater")}>
+              +
+            </PrimaryButton>
+          </View>
         </View>
 
         {/* +/- button */}
-      </View>
+      </Card>
       <View>{/* //log round */}</View>
     </View>
   );
@@ -81,5 +88,12 @@ const styles = StyleSheet.create({
   screan: {
     flex: 1,
     padding: 12,
+    marginTop: 50,
+  },
+  buttunsContainer: {
+    flexDirection: "row",
+  },
+  buttonContainer: {
+    flex: 1,
   },
 });
