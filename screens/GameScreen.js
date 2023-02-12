@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 12,
     marginTop: 50,
+    alignItems: 'center'
   },
   buttunsContainer: {
     flexDirection: "row",
