@@ -25,7 +25,7 @@ function GameOverScreen({ roundsNumber, userNumber, onStartNewGame }) {
   const imageStyle = {
     width: imageSize,
     height: imageSize,
-    borderRadius: (imageSize/2),
+    borderRadius: imageSize / 2,
   };
 
   return (
@@ -33,7 +33,7 @@ function GameOverScreen({ roundsNumber, userNumber, onStartNewGame }) {
       <Title>Game is Over</Title>
       <View style={styles.imageContainer}>
         <Image
-          style={[styles.image ,imageStyle]}
+          style={[styles.image, imageStyle]}
           source={require("../assets/images/success.png")}
         />
       </View>
